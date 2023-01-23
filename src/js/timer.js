@@ -100,6 +100,13 @@ export default class Timer {
   //callback for timer setInterval
   #countTimer() {
     const timeDifference = this.convertMs(this.#selectedDate - new Date());
+    if (timeDifference.seconds === 0) {
+      if (Object.values(timeDifference).join('') === '0000') {
+        console.log('time has come');
+        showTimeHasCome();
+        stopInterval();
+      }
+    }
     this.#showTimeDifference(timeDifference);
   }
 
